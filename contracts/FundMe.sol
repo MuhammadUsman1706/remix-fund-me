@@ -20,6 +20,22 @@ contract FundMe {
 
         // reverting undoes any action done, and then sends the remianing gas back
     }
+
+    function getPrice() public {
+        // To interact with the SC (smart contract) we'll need two things, ABI and address
+        // Address 0x694AA1769357215DE4FAC081bf1f309aDC325306
+        // ABI is information about the contract, i.e. it's functions and variables, etc, like a TS interface!
+
+    }
+
+    function getVersion() public view returns (uint256){
+        AggregatorV3Interface priceFeed = AggregatorV3Interface(0x694AA1769357215DE4FAC081bf1f309aDC325306);
+        return priceFeed.version();
+    }
+
+    function getConversionRate() public {
+
+    }
 }
 
 // A blockchain by itself, cannot communicate with outer world or data. It cannot interact with even another system, like an AI system. It cannot call an API because data would be differnt for different users and it wouldn't be able to reach consensus that way, plus the API would be "centralized". This is where blockchain oracle comes into play.
