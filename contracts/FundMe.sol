@@ -28,6 +28,19 @@ contract FundMe {
 
         // reverting undoes any action done, and then sends the remaining gas back
     }
+
+    function withdraw() public {
+        // After withdrawal, we clear the amount paid by any funder. (Awain)
+        for (
+            uint256 funderIndex = 0;
+            funderIndex < funders.length;
+            funderIndex++
+        ) {
+            addressToAmountFunded[funders[funderIndex]] = 0;
+        }
+
+        funders = new address[](0); // (0) => starts with 0 elements
+    }
 }
 
 // A blockchain by itself, cannot communicate with outer world or data. It cannot interact with even another system, like an AI system. It cannot call an API because data would be differnt for different users and it wouldn't be able to reach consensus that way, plus the API would be "centralized". This is where blockchain oracle comes into play.
