@@ -40,6 +40,22 @@ contract FundMe {
         }
 
         funders = new address[](0); // (0) => starts with 0 elements
+
+        // Three ways to withdraw funds
+        // Transfer, send and call
+        // https://solidity-by-example.org/sending-ether/
+
+        // Transfer the amount to the sender of 'this' contract (address)
+        // msg.sender = address, payable(msg.sender) = payable address
+        // payable(msg.sender).transfer(address(this).balance); // reverts on faliure
+
+        // send
+        // bool sendSuccess = payable(msg.sender).send(address(this).balance); // returns bool on faliure
+        // require(sendSuccess, "Send Failed!");
+
+        // call, if we provide a funcion, it will provide data from the function we pass in it (not here) in second return value
+        (bool callSuccess, ) = payable(msg.sender).call{value: address(this).balance}(""); // returns two variables
+        require(callSuccess, "Call Failed!");
     }
 }
 
