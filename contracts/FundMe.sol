@@ -13,6 +13,14 @@ contract FundMe {
     address[] public funders;
     mapping(address => uint256) public addressToAmountFunded;
 
+    address public owner;
+
+    // Immediately invoked upon calling the contract
+    constructor(){
+        // Whoever deploys this contract
+        owner = msg.sender;
+    }
+
     function fund() public payable {
         // We'll send ethereum through the value parameter. Every tranasction, including through MetaMask populates this value field. It can be wei, gwei and ethereum.
         // anyone can fund, so public and payable so it can be sent ethereum
@@ -29,7 +37,8 @@ contract FundMe {
         // reverting undoes any action done, and then sends the remaining gas back
     }
 
-    function withdraw() public {
+    // the modifier runs before any withdraw
+    function withdraw() public onlyOwner {        
         // After withdrawal, we clear the amount paid by any funder. (Awain)
         for (
             uint256 funderIndex = 0;
@@ -56,6 +65,12 @@ contract FundMe {
         // call, if we provide a funcion, it will provide data from the function we pass in it (not here) in second return value
         (bool callSuccess, ) = payable(msg.sender).call{value: address(this).balance}(""); // returns two variables
         require(callSuccess, "Call Failed!");
+    }
+
+    // Performs it's functions and then renders the main function at '_'
+    modifier onlyOwner {
+        require(msg.sender == owner, "Access Denied");
+        _;
     }
 }
 
