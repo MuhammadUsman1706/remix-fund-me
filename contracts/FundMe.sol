@@ -15,7 +15,7 @@ contract FundMe {
 
     address public owner;
 
-    // Immediately invoked upon calling the contract
+    // Immediately invoked upon deploying the contract
     constructor(){
         // Whoever deploys this contract
         owner = msg.sender;

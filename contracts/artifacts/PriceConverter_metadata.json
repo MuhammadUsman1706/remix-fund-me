@@ -41,11 +41,11 @@
 			]
 		},
 		"contracts/PriceConverter.sol": {
-			"keccak256": "0x923e264d3a576d47a3147c3439d4cc5922a4d22c3534659c7a47a3f165099e72",
+			"keccak256": "0xa3fa4dcb7e174445b284b54353009dd5766f541bceef931ca0b19cb2ec9f6688",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://2690ab3b2d81e0634acaed550c9468dac06d8ca227fb3f1e8b910fea87aaa793",
-				"dweb:/ipfs/QmfGkZkhcVMQWTCgHzchiHthQVdZ31HncZepzzBwz9P9ZK"
+				"bzz-raw://cbe3a3d5b040d965c12ef5b335540d838afc56fad37d29a86d9cf09b4c2d509e",
+				"dweb:/ipfs/QmahNYP1cUdoHjprMfJotruq5F7wY3CDsxDRih95GP15Rq"
 			]
 		}
 	},
